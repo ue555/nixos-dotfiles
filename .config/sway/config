@@ -1,6 +1,6 @@
 set $mod Mod4
 
-set $term alacritty
+output * scale 3
 
 input type:keyboard {
     xkb_layout "us"

@@ -1,6 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
+# and in the NixOS manual (accessible by running 'nixos-help').
 
 { config, pkgs, ... }:
 
@@ -43,18 +43,53 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
+  # コンソールの設定
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";  # 英字配列キーボード
+  };
+
+  # 日本語入力（fcitx5 + mozc）
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [
+      fcitx5-mozc    # Google日本語入力
+      fcitx5-gtk     # GTKアプリ対応
+    ];
+  };
+
+  # 日本語フォント
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts-cjk-sans    # 日本語フォント
+    ];
+    fontconfig.defaultFonts = {
+      monospace = [ "Noto Sans Mono CJK JP" ];
+    };
+  };
+
+  # Swayを有効化
+  programs.sway.enable = true;
+
+  # fcitx5の環境変数
+  environment.sessionVariables = {
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+  };
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-  
-  services.gpm ={
+
+  services.gpm = {
     enable = true;
     protocol = "imps2";
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.kouji = {
     isNormalUser = true;
     description = "kouji";
@@ -81,20 +116,28 @@
       promptInit = ''
         PROMPT='%n@nixos:%~$ '
       '';
+      shellAliases = {
+        nrs = "sudo nixos-rebuild switch --flake '.#myNixOS'";
+      };
+      initExtra = ''
+        alias nix='noglob nix'
+        alias nixos-rebuild='noglob nixos-rebuild'
+      '';
     };
   };
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     neovim
     git
     zsh
+    alacritty    # ターミナルエミュレータ
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -118,15 +161,15 @@
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # on your system were taken. It's perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-  
+
   nix = {
     settings = {
-     experimental-features = ["nix-command" "flakes"];
+      experimental-features = ["nix-command" "flakes"];
     };
   };
 }

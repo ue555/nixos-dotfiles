@@ -43,35 +43,30 @@
     LC_TIME = "ja_JP.UTF-8";
   };
 
-  # コンソールの設定
   console = {
     font = "Lat2-Terminus16";
     keyMap = "us";  # 英字配列キーボード
   };
 
-  # 日本語入力（fcitx5 + mozc）
   i18n.inputMethod = {
     enabled = "fcitx5";
     fcitx5.addons = with pkgs; [
-      fcitx5-mozc    # Google日本語入力
-      fcitx5-gtk     # GTKアプリ対応
+      fcitx5-mozc
+      fcitx5-gtk
     ];
   };
 
-  # 日本語フォント
   fonts = {
     packages = with pkgs; [
-      noto-fonts-cjk-sans    # 日本語フォント
+      noto-fonts-cjk-sans
     ];
     fontconfig.defaultFonts = {
       monospace = [ "Noto Sans Mono CJK JP" ];
     };
   };
 
-  # Swayを有効化
   programs.sway.enable = true;
 
-  # fcitx5の環境変数
   environment.sessionVariables = {
     GTK_IM_MODULE = "fcitx";
     QT_IM_MODULE = "fcitx";
@@ -137,7 +132,6 @@
     neovim
     git
     zsh
-    alacritty    # ターミナルエミュレータ
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

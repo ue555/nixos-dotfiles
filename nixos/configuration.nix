@@ -111,13 +111,6 @@
       promptInit = ''
         PROMPT='%n@nixos:%~$ '
       '';
-      shellAliases = {
-        nrs = "sudo nixos-rebuild switch --flake '.#myNixOS'";
-      };
-      initExtra = ''
-        alias nix='noglob nix'
-        alias nixos-rebuild='noglob nixos-rebuild'
-      '';
     };
   };
 

@@ -48,11 +48,11 @@
    fcitx5.addons = [pkgs.fcitx5-mozc];
  };
  fonts = {
-   fonts = with pkgs; [
+   packages = with pkgs; [
      noto-fonts-cjk-serif
      noto-fonts-cjk-sans
      noto-fonts-color-emoji
-     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" "Hack" ]; })
+     jetbrains-mono  # nerdfontsの代わり
    ];
 
    fontDir.enable = true;
@@ -60,7 +60,7 @@
      defaultFonts = {
        serif = ["Noto Serif CJK JP" "Noto Color Emoji"];
        sansSerif = ["Noto Sans CJK JP" "Noto Color Emoji"];
-       monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+       monospace = ["JetBrains Mono" "Noto Color Emoji"];
        emoji = ["Noto Color Emoji"];
      };
    };

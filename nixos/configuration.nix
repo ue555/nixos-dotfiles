@@ -51,8 +51,8 @@
    fonts = with pkgs; [
      noto-fonts-cjk-serif
      noto-fonts-cjk-sans
-     noto-fonts-emoji
-     nerdfonts
+     noto-fonts-color-emoji
+     (nerdfonts.override { fonts = [ "JetBrainsMono" "FiraCode" "Hack" ]; })
    ];
 
    fontDir.enable = true;

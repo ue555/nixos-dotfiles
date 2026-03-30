@@ -1,0 +1,127 @@
+### 基本設定 ###
+# Modキー（Super = Windowsキー）
+set $mod Mod4
+
+# フォント
+font pango:JetBrains Mono 11
+
+### ワークスペース定義 ###
+set $ws1 "1:term"
+set $ws2 "2:wezterm"
+set $ws3 "3:chrome"
+
+### アプリをワークスペースに割り当て ###
+assign [app_id="foot"]                          $ws1
+assign [app_id="org.wezfurlong.wezterm"]        $ws2
+assign [class="Google-chrome"]                  $ws3
+
+### 起動時に自動実行 ###
+exec foot
+exec wezterm
+exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+
+# 通知デーモン
+exec mako
+
+# ステータスバー
+bar {
+    swaybar_command waybar
+}
+
+### キーバインド ###
+# ターミナル起動
+bindsym $mod+Return exec foot
+
+# アプリランチャー
+bindsym $mod+d exec wofi --show run
+
+# ウィンドウを閉じる
+bindsym $mod+Shift+q kill
+
+# Sway を終了
+bindsym $mod+Shift+e exec swaymsg exit
+
+# 設定をリロード
+bindsym $mod+Shift+r reload
+
+# 画面ロック
+bindsym $mod+l exec swaylock -f -c 000000
+
+### ウィンドウ移動（フォーカス） ###
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+### ウィンドウ移動 ###
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+### 分割方向 ###
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+### レイアウト切り替え ###
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+### フローティング切り替え ###
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+### フルスクリーン ###
+bindsym $mod+f fullscreen toggle
+
+### ワークスペース切り替え ###
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+
+### ウィンドウをワークスペースに移動 ###
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+
+### スクリーンショット ###
+bindsym $mod+Print exec grim ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
+
+### リサイズモード ###
+mode "resize" {
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+### 外観 ###
+# ウィンドウのボーダー
+default_border pixel 2
+gaps inner 8
+gaps outer 4
+
+# 色設定（アクティブ: 青、非アクティブ: グレー）
+client.focused          #4c7899 #285577 #ffffff #2e9ef4 #285577
+client.unfocused        #333333 #222222 #888888 #292d2e #222222
+
+### 入力設定 ###
+input type:keyboard {
+    xkb_layout us
+}
+
+### アイドル管理 ###
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 000000' \
+    timeout 600 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 000000'

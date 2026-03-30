@@ -112,12 +112,39 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  # Sway（Wayland WM）の設定
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+  # XWayland（Chrome などの X11 アプリ用）
+  programs.xwayland.enable = true;
+
+  # ログインシェルから sway を起動できるようにする環境変数
+  environment.sessionVariables = {
+    MOZ_ENABLE_WAYLAND = "1";
+    NIXOS_OZONE_WL = "1";
+  };
+
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     neovim
     git
     zsh
+    # Sway 関連
+    foot          # ワークスペース1: ターミナル
+    wezterm       # ワークスペース2: ターミナル
+    google-chrome # ワークスペース3: ブラウザ
+    waybar        # ステータスバー
+    wofi          # アプリランチャー
+    grim          # スクリーンショット
+    slurp         # スクリーンショット範囲選択
+    wl-clipboard  # クリップボード
+    mako          # 通知デーモン
+    swaylock      # 画面ロック
+    swayidle      # アイドル管理
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

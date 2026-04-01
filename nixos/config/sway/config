@@ -23,6 +23,9 @@ exec swaymsg 'workspace "3:chrome"; exec /run/current-system/sw/bin/google-chrom
 # 通知デーモン
 exec mako
 
+# 日本語入力（fcitx5）
+exec fcitx5 -d
+
 # ステータスバー
 bar {
     swaybar_command waybar

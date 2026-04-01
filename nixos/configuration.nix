@@ -121,10 +121,15 @@
   # XWayland（Chrome などの X11 アプリ用）
   programs.xwayland.enable = true;
 
-  # ログインシェルから sway を起動できるようにする環境変数
+  # Wayland・fcitx5 用の環境変数
   environment.sessionVariables = {
     MOZ_ENABLE_WAYLAND = "1";
     NIXOS_OZONE_WL = "1";
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    SDL_IM_MODULE = "fcitx";
+    GLFW_IM_MODULE = "ibus";
   };
 
   environment.systemPackages = with pkgs; [

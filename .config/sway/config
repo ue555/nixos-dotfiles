@@ -16,9 +16,9 @@ assign [app_id="org.wezfurlong.wezterm"]        $ws2
 assign [class="Google-chrome"]                  $ws3
 
 ### 起動時に自動実行 ###
-exec foot
-exec wezterm
-exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+exec swaymsg "workspace $ws1; exec foot"
+exec swaymsg "workspace $ws2; exec wezterm"
+exec swaymsg "workspace $ws3; exec google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
 # 通知デーモン
 exec mako

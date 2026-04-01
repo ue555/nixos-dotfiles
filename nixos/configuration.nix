@@ -143,6 +143,7 @@
     zsh
     gh    # GitHub CLI
     nodejs # npm に必要
+    github-copilot-cli # Copilot CLI
     # Sway 関連
     foot          # ワークスペース1: ターミナル
     wezterm       # ワークスペース2: ターミナル

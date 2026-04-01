@@ -122,6 +122,12 @@ input type:keyboard {
     xkb_layout us
 }
 
+### 出力設定 ###
+output eDP-1 {
+    resolution 1920x1080
+    scale 1
+}
+
 ### アイドル管理 ###
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \

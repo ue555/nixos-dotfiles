@@ -48,7 +48,7 @@ bindsym $mod+Shift+e exec swaymsg exit
 bindsym $mod+Shift+r reload
 
 # 画面ロック
-bindsym $mod+l exec swaylock -f -c 000000
+bindsym $mod+Shift+z exec swaylock -f -c 000000
 
 ### ウィンドウ移動（フォーカス） ###
 bindsym $mod+h focus left

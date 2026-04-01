@@ -115,6 +115,7 @@
   # Sway（Wayland WM）の設定
   programs.sway = {
     enable = true;
+    package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
   };
 

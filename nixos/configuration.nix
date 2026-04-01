@@ -141,9 +141,8 @@
     neovim
     git
     zsh
-    gh    # GitHub CLI（Copilot CLI 拡張に必要）
+    gh    # GitHub CLI
     nodejs # npm に必要
-    github-copilot-cli # Copilot CLI
     # Sway 関連
     foot          # ワークスペース1: ターミナル
     wezterm       # ワークスペース2: ターミナル

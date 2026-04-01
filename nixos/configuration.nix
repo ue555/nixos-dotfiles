@@ -103,6 +103,7 @@
       enable = true;
       promptInit = ''
         PROMPT='%n@nixos:%~$ '
+        export PATH="$HOME/.npm-global/bin:$PATH"
       '';
     };
   };
@@ -131,6 +132,7 @@
     XMODIFIERS = "@im=fcitx";
     SDL_IM_MODULE = "fcitx";
     GLFW_IM_MODULE = "ibus";
+    NPM_CONFIG_PREFIX = "$HOME/.npm-global";
   };
 
   environment.systemPackages = with pkgs; [

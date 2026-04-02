@@ -9,16 +9,19 @@ font pango:JetBrains Mono 18
 set $ws1 "1:term"
 set $ws2 "2:wezterm"
 set $ws3 "3:chrome"
+set $ws4 "4:firefox"
 
 ### アプリをワークスペースに割り当て ###
 assign [app_id="foot"]                          $ws1
 assign [app_id="org.wezfurlong.wezterm"]        $ws2
 assign [class="Google-chrome"]                  $ws3
+assign [app_id="firefox"]                       $ws4
 
 ### 起動時に自動実行（ワークスペース名を直接指定）###
 exec swaymsg 'workspace "1:term"; exec /run/current-system/sw/bin/foot'
 exec sh -c 'sleep 1 && swaymsg workspace "2:wezterm"; exec /run/current-system/sw/bin/wezterm'
 exec sh -c 'sleep 2 && swaymsg workspace "3:chrome"; exec /run/current-system/sw/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland'
+exec sh -c 'sleep 3 && swaymsg workspace "4:firefox"; exec /run/current-system/sw/bin/firefox'
 
 # 通知デーモン
 exec mako
@@ -82,14 +85,14 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 
 ### ウィンドウをワークスペースに移動 ###
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace 5
 
 ### スクリーンショット ###

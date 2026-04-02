@@ -3,7 +3,7 @@
 set $mod Mod4
 
 # フォント
-font pango:JetBrains Mono 11
+font pango:JetBrains Mono 18
 
 ### ワークスペース定義 ###
 set $ws1 "1:term"
@@ -17,8 +17,8 @@ assign [class="Google-chrome"]                  $ws3
 
 ### 起動時に自動実行（ワークスペース名を直接指定）###
 exec swaymsg 'workspace "1:term"; exec /run/current-system/sw/bin/foot'
-exec swaymsg 'workspace "2:wezterm"; exec /run/current-system/sw/bin/wezterm'
-exec swaymsg 'workspace "3:chrome"; exec /run/current-system/sw/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland'
+exec sh -c 'sleep 1 && swaymsg workspace "2:wezterm"; exec /run/current-system/sw/bin/wezterm'
+exec sh -c 'sleep 2 && swaymsg workspace "3:chrome"; exec /run/current-system/sw/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland'
 
 # 通知デーモン
 exec mako
@@ -48,7 +48,7 @@ bindsym $mod+Shift+e exec swaymsg exit
 bindsym $mod+Shift+r reload
 
 # 画面ロック
-bindsym $mod+Shift+z exec swaylock -f -c 000000
+bindsym $mod+Shift+z exec swaylock -f
 
 ### ウィンドウ移動（フォーカス） ###
 bindsym $mod+h focus left
@@ -128,9 +128,12 @@ output eDP-1 {
     scale 1
 }
 
+# Ctrl+Z でもロック可能にする
+bindsym $mod+Ctrl+z exec swaylock -f
+
 ### アイドル管理 ###
 exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000' \
+    timeout 300 'swaylock -f' \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -c 000000'
+    before-sleep 'swaylock -f'

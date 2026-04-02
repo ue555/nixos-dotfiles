@@ -81,7 +81,7 @@
   users.users.kouji = {
     isNormalUser = true;
     description = "kouji";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -118,6 +118,9 @@
     package = pkgs.swayfx;
     wrapperFeatures.gtk = true;
   };
+
+  # swaylockのセキュリティラッパー設定
+  security.pam.services.swaylock = {};
 
   # XWayland（Chrome などの X11 アプリ用）
   programs.xwayland.enable = true;

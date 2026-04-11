@@ -152,6 +152,7 @@
     foot          # ワークスペース1: ターミナル
     wezterm       # ワークスペース2: ターミナル
     google-chrome # ワークスペース3: ブラウザ
+    chromium      # ワークスペース6: ブラウザ
     waybar        # ステータスバー
     wofi          # アプリランチャー
     grim          # スクリーンショット

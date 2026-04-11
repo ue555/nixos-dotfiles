@@ -143,6 +143,8 @@
     git
     zsh
     gh    # GitHub CLI
+    claude-code # Anthropic Claude Code CLI
+    codex # OpenAI Codex CLI
     nodejs # npm に必要
     github-copilot-cli # Copilot CLI
     go    # Go Programming language

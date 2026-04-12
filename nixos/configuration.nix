@@ -161,6 +161,10 @@
     mako          # 通知デーモン
     swaylock      # 画面ロック
     swayidle      # アイドル管理
+    # ファイルマネージャーとPDFビューア
+    xfce.thunar     # ファイルマネージャー (ワークスペース7)
+    zathura         # PDFビューア
+    poppler-utils   # PDF用ツール
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

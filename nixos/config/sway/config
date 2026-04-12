@@ -12,6 +12,7 @@ set $ws3 "3:chrome"
 set $ws4 "4:firefox"
 set $ws5 "5:slack"
 set $ws6 "6:chromium"
+set $ws7 "7:files"
 
 ### アプリをワークスペースに割り当て ###
 assign [app_id="foot"]                          $ws1
@@ -22,6 +23,10 @@ assign [class="Slack"]                          $ws5
 assign [app_id="Slack"]                         $ws5
 assign [app_id="chromium-browser"]              $ws6
 assign [class="Chromium-browser"]               $ws6
+assign [app_id="thunar"]                        $ws7
+assign [class="Thunar"]                         $ws7
+assign [app_id="org.pwmt.zathura"]              $ws7
+assign [class="Zathura"]                        $ws7
 
 ### 起動時に自動実行（ワークスペース名を直接指定）###
 exec swaymsg 'workspace "1:term"; exec /run/current-system/sw/bin/foot'
@@ -30,6 +35,7 @@ exec sh -c 'sleep 2 && swaymsg workspace "3:chrome"; exec /run/current-system/sw
 exec sh -c 'sleep 3 && swaymsg workspace "4:firefox"; exec firefox'
 exec sh -c 'sleep 5 && swaymsg workspace "5:slack"; /home/kouji/.nix-profile/bin/slack --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland &'
 exec sh -c 'sleep 6 && swaymsg workspace "6:chromium"; exec /run/current-system/sw/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland'
+exec sh -c 'sleep 7 && swaymsg workspace "7:files"; exec /run/current-system/sw/bin/thunar'
 
 # 通知デーモン
 exec mako
@@ -48,6 +54,9 @@ bindsym $mod+Return exec foot
 
 # アプリランチャー
 bindsym $mod+d exec wofi --show run
+
+# ファイルマネージャー (ワークスペース7で起動)
+bindsym $mod+n exec swaymsg 'workspace $ws7; exec thunar'
 
 # ウィンドウを閉じる
 bindsym $mod+Shift+q kill
@@ -96,6 +105,7 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
 
 ### ウィンドウをワークスペースに移動 ###
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -104,6 +114,7 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
 
 ### スクリーンショット ###
 bindsym $mod+Print exec grim ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png

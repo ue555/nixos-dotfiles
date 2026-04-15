@@ -116,10 +116,6 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 
-### アクティブなウィンドウを隣のワークスペースに移動 ###
-bindsym $mod+Shift+Left move container to workspace prev, workspace prev
-bindsym $mod+Shift+Right move container to workspace next, workspace next
-
 ### スクリーンショット ###
 bindsym $mod+Print exec grim ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png
 bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png

@@ -9,20 +9,20 @@ font pango:JetBrains Mono 18
 set $ws1 "1:term"
 set $ws2 "2:wezterm"
 set $ws3 "3:chrome"
-set $ws4 "4:firefox"
-set $ws5 "5:slack"
-set $ws6 "6:chromium"
+set $ws4 "4:chromium"
+set $ws5 "5:firefox"
+set $ws6 "6:slack"
 set $ws7 "7:files"
 
 ### アプリをワークスペースに割り当て ###
 assign [app_id="foot"]                          $ws1
 assign [app_id="org.wezfurlong.wezterm"]        $ws2
 assign [class="Google-chrome"]                  $ws3
-assign [app_id="firefox"]                       $ws4
-assign [class="Slack"]                          $ws5
-assign [app_id="Slack"]                         $ws5
-assign [app_id="chromium-browser"]              $ws6
-assign [class="Chromium-browser"]               $ws6
+assign [app_id="chromium-browser"]              $ws4
+assign [class="Chromium-browser"]               $ws4
+assign [app_id="firefox"]                       $ws5
+assign [class="Slack"]                          $ws6
+assign [app_id="Slack"]                         $ws6
 assign [app_id="thunar"]                        $ws7
 assign [class="Thunar"]                         $ws7
 assign [app_id="org.pwmt.zathura"]              $ws7
@@ -32,9 +32,9 @@ assign [class="Zathura"]                        $ws7
 exec swaymsg 'workspace "1:term"; exec /run/current-system/sw/bin/foot'
 exec sh -c 'sleep 1 && swaymsg workspace "2:wezterm"; exec /run/current-system/sw/bin/wezterm'
 exec sh -c 'sleep 2 && swaymsg workspace "3:chrome"; exec /run/current-system/sw/bin/google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland'
-exec sh -c 'sleep 3 && swaymsg workspace "4:firefox"; exec firefox'
-exec sh -c 'sleep 5 && swaymsg workspace "5:slack"; /home/kouji/.nix-profile/bin/slack --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland &'
-exec sh -c 'sleep 6 && swaymsg workspace "6:chromium"; exec /run/current-system/sw/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland'
+exec sh -c 'sleep 3 && swaymsg workspace "4:chromium"; exec /run/current-system/sw/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland'
+exec sh -c 'sleep 4 && swaymsg workspace "5:firefox"; exec firefox'
+exec sh -c 'sleep 5 && swaymsg workspace "6:slack"; /home/kouji/.nix-profile/bin/slack --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland &'
 exec sh -c 'sleep 7 && swaymsg workspace "7:files"; exec /run/current-system/sw/bin/thunar'
 
 # 通知デーモン

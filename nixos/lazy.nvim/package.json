@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "blade-formatter": "^1.41.1"
+  },
+  "dependencies": {
+    "djlint": "^1.36.4",
+    "js-beautify": "^1.15.3"
+  }
+}

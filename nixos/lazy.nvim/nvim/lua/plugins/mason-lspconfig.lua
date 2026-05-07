@@ -36,22 +36,20 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = { "lua_ls", "rust_analyzer", "intelephense", "markdown_oxide", "ts_ls", "pyright" },
 		})
-		
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				require("lspconfig")[server_name].setup({})
-			end,
-			["lua_ls"] = function()
-				require("lspconfig").lua_ls.setup({
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
+		require("lspconfig").lua_ls.setup({
+			settings = {
+				Lua = {
+					completion = {
+						callSnippet = "Replace",
 					},
-				})
-			end,
+				},
+			},
 		})
+		require("lspconfig").gopls.setup({})
+		require("lspconfig").rust_analyzer.setup({})
+		require("lspconfig").intelephense.setup({})
+		require("lspconfig").markdown_oxide.setup({})
+		require("lspconfig").ts_ls.setup({})
+		require("lspconfig").pyright.setup({})
 	end,
 }

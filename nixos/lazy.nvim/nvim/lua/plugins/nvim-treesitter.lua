@@ -6,9 +6,7 @@ return {
 		end
 	end,
 	config = function()
-		local configs = require("nvim-treesitter.configs")
-
-		configs.setup({
+		require("nvim-treesitter").setup({
 			modules = {},
 			ensure_installed = {},
 			incremental_selection = {

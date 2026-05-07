@@ -32,24 +32,27 @@ return {
 				set("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", { buffer = true })
 			end,
 		})
+		
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = { "lua_ls", "rust_analyzer", "intelephense", "markdown_oxide", "ts_ls", "pyright" },
-		})
-		require("lspconfig").lua_ls.setup({
-			settings = {
-				Lua = {
-					completion = {
-						callSnippet = "Replace",
-					},
-				},
+			handlers = {
+				function(server_name)
+					vim.lsp.enable(server_name)
+				end,
+				["lua_ls"] = function()
+					vim.lsp.config("lua_ls", {
+						settings = {
+							Lua = {
+								completion = {
+									callSnippet = "Replace",
+								},
+							},
+						},
+					})
+					vim.lsp.enable("lua_ls")
+				end,
 			},
 		})
-		require("lspconfig").gopls.setup({})
-		require("lspconfig").rust_analyzer.setup({})
-		require("lspconfig").intelephense.setup({})
-		require("lspconfig").markdown_oxide.setup({})
-		require("lspconfig").ts_ls.setup({})
-		require("lspconfig").pyright.setup({})
 	end,
 }

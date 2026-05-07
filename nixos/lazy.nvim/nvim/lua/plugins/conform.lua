@@ -38,6 +38,7 @@ return {
 			json = { "jq" },
 			markdown = { "markdown-toc" },
 			html = { "html_beautify" },
+			python = { "black", "isort" },
 		},
 		formatters = {
 			shfmt = {

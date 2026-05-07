@@ -81,7 +81,7 @@
   users.users.kouji = {
     isNormalUser = true;
     description = "kouji";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "docker" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -122,6 +122,9 @@
   # swaylockのセキュリティラッパー設定
   security.pam.services.swaylock = {};
 
+  # Docker
+  virtualisation.docker.enable = true;
+
   # XWayland（Chrome などの X11 アプリ用）
   programs.xwayland.enable = true;
 
@@ -147,7 +150,11 @@
     codex # OpenAI Codex CLI
     nodejs # npm に必要
     github-copilot-cli # Copilot CLI
-    go    # Go Programming language
+    docker-compose # Docker Compose
+    # Python versions
+    python311
+    python312
+    python313
     # Sway 関連
     foot          # ワークスペース1: ターミナル
     wezterm       # ワークスペース2: ターミナル

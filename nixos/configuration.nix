@@ -151,6 +151,7 @@
     nodejs # npm に必要
     github-copilot-cli # Copilot CLI
     docker-compose # Docker Compose
+    marksman # Markdown LSP
     # Python versions
     python311
     python312

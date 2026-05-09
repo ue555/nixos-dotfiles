@@ -36,7 +36,7 @@ return {
 			blade = { "blade-formatter" },
 			yaml = { "yamlfmt" },
 			json = { "jq" },
-			markdown = { "markdown-toc" },
+			markdown = { "prettier" },
 			html = { "html_beautify" },
 			python = { "black", "isort" },
 		},

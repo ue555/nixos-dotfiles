@@ -13,6 +13,7 @@ set $ws4 "4:chromium"
 set $ws5 "5:firefox"
 set $ws6 "6:slack"
 set $ws7 "7:files"
+set $wsq "q:dbeaver"
 
 ### アプリをワークスペースに割り当て ###
 assign [app_id="foot"]                          $ws1
@@ -27,6 +28,7 @@ assign [app_id="thunar"]                        $ws7
 assign [class="Thunar"]                         $ws7
 assign [app_id="org.pwmt.zathura"]              $ws7
 assign [class="Zathura"]                        $ws7
+assign [class="DBeaver"]                        $wsq
 
 ### 起動時に自動実行（ワークスペース名を直接指定）###
 exec swaymsg 'workspace "1:term"; exec /run/current-system/sw/bin/foot'
@@ -57,6 +59,9 @@ bindsym $mod+d exec wofi --show run
 
 # ファイルマネージャー (ワークスペース7で起動)
 bindsym $mod+n exec swaymsg 'workspace $ws7; exec thunar'
+
+# DBeaver (ワークスペースqで起動)
+bindsym $mod+Shift+d exec swaymsg 'workspace $wsq; exec dbeaver'
 
 # ウィンドウを閉じる
 bindsym $mod+Shift+q kill
@@ -106,6 +111,7 @@ bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
+bindsym $mod+q workspace $wsq
 
 ### ウィンドウをワークスペースに移動 ###
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -115,6 +121,7 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+q move container to workspace $wsq
 
 ### スクリーンショット ###
 bindsym $mod+Print exec grim ~/Pictures/screenshot_$(date +%Y%m%d_%H%M%S).png

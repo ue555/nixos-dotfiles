@@ -153,6 +153,7 @@
     docker-compose # Docker Compose
     marksman # Markdown LSP
     dbeaver-bin # SQL GUI Client
+    brave # Brave Browser
     # Python versions
     python311
     python312

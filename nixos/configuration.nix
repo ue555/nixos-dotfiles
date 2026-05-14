@@ -154,7 +154,6 @@
     marksman # Markdown LSP
     dbeaver-bin # SQL GUI Client
     brave # Brave Browser
-    opera # Opera Browser
     vivaldi # Vivaldi Browser
     # Python versions
     python311

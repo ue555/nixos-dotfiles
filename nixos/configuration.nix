@@ -152,6 +152,7 @@
     github-copilot-cli # Copilot CLI
     docker-compose # Docker Compose
     marksman # Markdown LSP
+    dbeaver-bin # SQL GUI Client
     # Python versions
     python311
     python312

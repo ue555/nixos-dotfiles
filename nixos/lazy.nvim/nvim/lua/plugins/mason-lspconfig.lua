@@ -35,7 +35,7 @@ return {
 		
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls", "rust_analyzer", "intelephense", "marksman", "ts_ls", "pyright" },
+			ensure_installed = { "lua_ls", "rust_analyzer", "intelephense", "ts_ls", "pyright" },
 			handlers = {
 				function(server_name)
 					vim.lsp.enable(server_name)
@@ -54,5 +54,13 @@ return {
 				end,
 			},
 		})
+		
+		-- Marksman (installed via Nix, not Mason)
+		vim.lsp.config("marksman", {
+			cmd = { "marksman", "server" },
+			filetypes = { "markdown", "markdown.mdx" },
+			root_markers = { ".git", ".marksman.toml" },
+		})
+		vim.lsp.enable("marksman")
 	end,
 }
